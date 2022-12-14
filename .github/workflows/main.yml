@@ -30,7 +30,7 @@ jobs:
         skip_existing: true
     - name: Create append_cmd
       env:
-          append_cmd: "--file=./setup.py --skip-unresolved=false"
+          append_cmd: "--file=setup.py --skip-unresolved=false"
       run: echo ${append_cmd}
         
       # Running Snyk
