@@ -1,0 +1,34 @@
+name: Testing Snyk
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  # Job Name
+  snyk-pipeline:
+    
+    runs-on: ubuntu-latest
+    
+    steps:      
+      - uses: actions/checkout@master
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Running Snyk vuln check
+        
+      - name: Create append_cmd
+        env:
+          append_cmd: "--file=./setup.py --skip-unresolved=false"
+        run: echo testing
+        
+      # Running Snyk
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/setup@master
+        continue-on-error: true
+      - name: Snyk Monitor
+        run: snyk monitor --org='774fd541-8351-4b80-9b89-8998e4a5ac89' ${append_cmd}
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
