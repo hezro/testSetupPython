@@ -41,6 +41,6 @@ jobs:
       uses: snyk/actions/setup@master
       continue-on-error: true
     - name: Snyk Monitor
-      run: snyk monitor -d --org=774fd541-8351-4b80-9b89-8998e4a5ac89
+      run: snyk monitor -d --command=/opt/hostedtoolcache/Python/3.11.0/x64/python --org=774fd541-8351-4b80-9b89-8998e4a5ac89 --file=setup.py
       env:
        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
