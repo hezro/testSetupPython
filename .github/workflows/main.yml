@@ -38,6 +38,6 @@ jobs:
       uses: snyk/actions/setup@master
       continue-on-error: true
     - name: Snyk Monitor
-      run: snyk monitor -d --org='774fd541-8351-4b80-9b89-8998e4a5ac89' --file=./setup.py --skip-unresolved=false
+      run: snyk monitor -d --org='774fd541-8351-4b80-9b89-8998e4a5ac89' --file=setup.py --skip-unresolved=false
       env:
        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
